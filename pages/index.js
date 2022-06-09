@@ -6,7 +6,7 @@ import "@rainbow-me/rainbowkit/styles.css";
 import {
   getDefaultWallets,
   RainbowKitProvider,
-  ConnectButton,
+  ConnectButton
 } from '@rainbow-me/rainbowkit';
 import {
   chain,
