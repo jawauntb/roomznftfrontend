@@ -16,6 +16,7 @@ import {
 } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
+import { NFTPreview } from '../components/NFTPreview';
 
 const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
@@ -40,6 +41,11 @@ export default function Home() {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
+        <NFTPreview
+          previewImgSrc="https://roomz.io/images/nft-preview.png"
+          collectionName="Roomz NFT"
+          priceInEth="0.05"
+        />
         <div
           style={{
             position: "fixed",
