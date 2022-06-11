@@ -26,10 +26,10 @@ const NFTCard = ({ isMinted, mintData}: NFTCardProps) => {
             <BackCard isCardFlipped={isMinted}>
                 <div style={{ padding: 24 }}>
                     <Image
-                        src="/nft.png"
+                        src="http://drive.google.com/uc?export=view&id=1uk-e2u_17i0P7lHFQlbxvaOjwgZf9wcs"
                         width="80"
                         height="80"
-                        alt="RainbowKit Demo NFT"
+                        alt="Roomz NFT"
                         style={{ borderRadius: 8 }}
                     />
                     <h2 style={{ marginTop: 24, marginBottom: 6 }}>NFT Minted!</h2>
