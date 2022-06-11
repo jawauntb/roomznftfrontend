@@ -11,7 +11,6 @@ import contractInterface from '../contract-abi.json';
 import CollectionDetails from '../components/CollectionDetails';
 import NFTCard from '../components/NFTCard';
 
-
 const contractConfig = {
   addressOrName: '0x86fbbb1254c39602a7b067d5ae7e5c2bdfd61a30',
   contractInterface: contractInterface,
