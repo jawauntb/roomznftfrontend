@@ -26,7 +26,7 @@ const Home: NextPage = () => {
     isLoading: isMintLoading,
     isSuccess: isMintStarted,
     error: mintError,
-  } = useContractWrite(contractConfig, 'mint');
+  } = useContractWrite(contractConfig, 'mint', {args: 1});
 
   const { data: totalSupplyData } = useContractRead(
     contractConfig,
