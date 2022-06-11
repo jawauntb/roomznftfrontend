@@ -12,7 +12,7 @@ import CollectionDetails from '../components/CollectionDetails';
 import NFTCard from '../components/NFTCard';
 
 const contractConfig = {
-  addressOrName: '0x86fbbb1254c39602a7b067d5ae7e5c2bdfd61a30',
+  addressOrName: '0x486409104819A2B16DA01e5C904335596aac540E',
   contractInterface: contractInterface,
 };
 
