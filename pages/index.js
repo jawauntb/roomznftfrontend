@@ -1,8 +1,8 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import Image from 'next/image';
+import styles from '../styles/Home.module.css';
 import "@rainbow-me/rainbowkit/styles.css";
-
+import { MintPage } from './Mint';
 import {
   getDefaultWallets,
   RainbowKitProvider,
@@ -35,17 +35,12 @@ const wagmiClient = createClient({
   connectors,
   provider
 });
-
+const imgLink = "http://drive.google.com/uc?export=view&id=1VkYeajnkJlK1bhCcIUsgALVQGuteBwUF"
 
 export default function Home() {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
-        <NFTPreview
-          previewImgSrc="https://roomz.io/images/nft-preview.png"
-          collectionName="Roomz NFT"
-          priceInEth="0.05"
-        />
         <div
           style={{
             position: "fixed",
@@ -58,6 +53,12 @@ export default function Home() {
             justifyContent: "center"
           }}
         >
+        {MintPage}
+        <NFTPreview
+          previewImgSrc={imgLink}
+          collectionName="Roomz NFT"
+          priceInEth="0.05"
+        />
           <ConnectButton coolmode />
         </div>
       </RainbowKitProvider>

@@ -14,8 +14,6 @@ import { useContract } from '../hooks/useContract'
 
 const translations = require('../../public/locales/mint.json')
 
-type BlockchainError = { message: string }
-
 // Mainnet
 const tokenAddress = '0x5E96d69257b025d097863F3d69E9DcADb9a9810c'
 const networkChainId = 1
@@ -163,7 +161,7 @@ const MintPage = () => {
               </Box>
 
               <Heading fontSize={48} lineHeight={1.33}>
-                Bubki NFTs
+                Roomz NFTs
               </Heading>
 
               <TranslatedParagraph
@@ -231,7 +229,7 @@ const MintPage = () => {
                           textAlign="center"
                           fontWeight="bolder"
                         >
-                          Max 100 per transaction
+                          Max 5 per transaction
                         </Text>
                       </>
                     ) : (
@@ -248,7 +246,7 @@ const MintPage = () => {
                           borderRadius: '12px'
                         }}
                       >
-                        {translate('connectWallet')}
+                        'connectWallet'
                       </Button>
                     )}
                   </VStack>
@@ -275,7 +273,7 @@ const MintPage = () => {
                         borderRadius: '12px'
                       }}
                     >
-                      {translate('connectWallet')}
+                      'connectWallet'
                     </Button>
                   </VStack>
                 )}
