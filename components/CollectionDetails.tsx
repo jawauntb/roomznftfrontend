@@ -16,7 +16,8 @@ const CollectionDetails = ({
     isConnected,
     mintError,
     txError,
-    totalMinted
+    totalMinted,
+    mint,
 }: CollectionDetailsProps) => {
 
 
