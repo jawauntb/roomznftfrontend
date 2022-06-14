@@ -31,8 +31,8 @@ const CollectionDetails = ({
 
     return (
         <>
-            <div className="container" style={{backgroundColor: '#40E0D0', borderRadius:'25px', marginLeft: '100px', padding:'20px', boxShadow:'10px 10px lightblue'}}>
-                <div style={{ flex: '1 1 auto', color:'white' }}>
+            <div className="container" style={{backgroundColor: '#40E0D0', borderRadius:'25px', marginLeft: '100px', padding:'20px', boxShadow:'10px 10px lightblue', width: '100%'}}>
+                <div style={{ flex: '1 1 auto', color:'white' ,alignItems: 'center'}}>
                     <div style={{ padding: '24px 24px 24px 0' }}>
                     <p style={{ margin: '12px 0 24px', fontSize: '72px', fontWeight: 'bold' }}>
                         {totalMinted} minted so far!

@@ -79,12 +79,12 @@ const Home: NextPage = () => {
         <div style={{ position: 'absolute', top: '2em', right: '10em' }}>
           <ConnectButton />
         </div>
-        <div style={{ float: 'left' }}>
+        <div style={{ marginLeft:'10px' }}>
           <NFTCard
               isMinted={isMinted}
             mintData={mintData} />
         </div>
-        <div style={{ float: 'right' }}>
+        <div style={{ marginRight:'10px' }}>
           <CollectionDetails
               isMintLoading={isMintLoading}
               isMintStarted={isMintStarted}

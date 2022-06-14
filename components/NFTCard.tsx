@@ -17,11 +17,11 @@ const NFTCard = ({ isMinted, mintData}: NFTCardProps) => {
                 <Image
                     layout="responsive"
                     src="http://drive.google.com/uc?export=view&id=1VkYeajnkJlK1bhCcIUsgALVQGuteBwUF"
-                    width="500"
-                    height="500"
+                    width="500px"
+                    height="500px"
                     alt="Roomz NFT"
                 />
-                <h1 style={{ marginTop: 24 }}>Roomz NFT</h1>
+                <h1 style={{ marginTop: 24 }}>It's free real estate</h1>
             </FrontCard>
             <BackCard isCardFlipped={isMinted}>
                 <div style={{ padding: 24 }}>
