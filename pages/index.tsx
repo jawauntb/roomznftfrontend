@@ -1,24 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import {
   useConnect,
   useContractRead,
   useContractWrite,
+  useSigner,
   useWaitForTransaction,
 } from 'wagmi';
 import contractInterface from '../contract-abi.json';
 import CollectionDetails from '../components/CollectionDetails';
 import NFTCard from '../components/NFTCard';
 
-const contractConfig = {
-  addressOrName: '0xe322768B50E3FfAdC04Ae5025A978f5f9b8b288d',
-  contractInterface: contractInterface,
-};
 
 const Home: NextPage = () => {
   const [totalMinted, setTotalMinted] = React.useState(0);
+  const [totalSupply, setTotalSupply] = useState(0)
   const { isConnected } = useConnect();
+  const [maxSupply, setMaxSupply] = useState(10000)
+  const [isSaleActive, setIsSaleActive] = useState<boolean | null>(null)
+  const [mintCount, setMintCount] = useState(1);
+
+  const contractConfig = {
+    addressOrName: '0x2dEe30f43dd03C22c457c3B989a4E2985F079c42',
+    contractInterface: contractInterface,
+  };
 
   const {
     data: mintData,
@@ -26,12 +32,22 @@ const Home: NextPage = () => {
     isLoading: isMintLoading,
     isSuccess: isMintStarted,
     error: mintError,
-  } = useContractWrite(contractConfig, 'mint', {args: 1});
+  } = useContractWrite(contractConfig, 'mint', {args: mintCount});
 
   const { data: totalSupplyData } = useContractRead(
     contractConfig,
     'totalSupply',
     { watch: true }
+  );
+  const { data: maxSupplyData } = useContractRead(
+    contractConfig,
+    'maxSupply',
+    { watch: true }
+  );
+  const { data: isSaleActiveData } = useContractRead(
+      contractConfig,
+      'isSaleActive',
+      { watch: true }
   );
 
   const { isSuccess: txSuccess, error: txError } = useWaitForTransaction({
@@ -39,10 +55,16 @@ const Home: NextPage = () => {
   });
 
   React.useEffect(() => {
-    if (totalSupplyData) {
-      setTotalMinted(totalSupplyData.toNumber());
+    if (isSaleActiveData) {
+      setIsSaleActive(!!isSaleActiveData);
     }
-  }, [totalSupplyData]);
+    if (maxSupplyData) {
+      setMaxSupply(maxSupplyData.toNumber());
+    }
+    if (totalSupplyData && maxSupplyData) {
+      setTotalMinted(maxSupplyData.toNumber() - totalSupplyData.toNumber());
+    }
+  }, [totalSupplyData, maxSupplyData, isSaleActiveData]);
 
   const isMinted = txSuccess;
 
@@ -64,6 +86,8 @@ const Home: NextPage = () => {
           txError={txError}
           totalMinted={totalMinted}
           mint={mint}
+          setMintAmount={setMintCount}
+          mintAmount={mintCount}
       />
     </div>
   );

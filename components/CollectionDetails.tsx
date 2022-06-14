@@ -1,3 +1,8 @@
+import InputNumber from "./NumberInput";
+import { BigNumber, ethers } from 'ethers'
+import { useState, useEffect } from 'react'
+import { useContract, useProvider } from 'wagmi'
+
 export type CollectionDetailsProps = {
     isMintLoading: boolean,
     isMintStarted: boolean,
@@ -6,7 +11,9 @@ export type CollectionDetailsProps = {
     mintError: Error | null,
     txError: Error | null,
     totalMinted: number,
-    mint: VoidFunction
+    mint: () => void,
+    setMintAmount: React.Dispatch<React.SetStateAction<number>>,
+    mintAmount: number,
 }
 
 const CollectionDetails = ({
@@ -18,8 +25,10 @@ const CollectionDetails = ({
     txError,
     totalMinted,
     mint,
+    setMintAmount,
+    mintAmount,
 }: CollectionDetailsProps) => {
-
+    
 
     return (
         <>
@@ -42,19 +51,27 @@ const CollectionDetails = ({
                         </p>
                     )}
 
-                    {isConnected && !isMinted && (
-                        <button
-                        style={{ marginTop: 24 }}
-                        disabled={isMintLoading || isMintStarted}
-                        className="button"
-                        data-mint-loading={isMintLoading}
-                        data-mint-started={isMintStarted}
-                        onClick={() => mint()}
-                        >
-                        {isMintLoading && 'Waiting for approval'}
-                        {isMintStarted && 'Minting...'}
-                        {!isMintLoading && !isMintStarted && 'Mint'}
-                        </button>
+                        {isConnected && !isMinted && (
+                        <>
+                            <InputNumber
+                            isDisabled={false}
+                            onChange={(value) => setMintAmount(value)}
+                            />
+                            <button
+                            style={{ marginTop: 24 }}
+                            disabled={isMintLoading || isMintStarted}
+                            className="button"
+                            data-mint-loading={isMintLoading}
+                            data-mint-started={isMintStarted}
+                            onClick={() => mint()}
+                            >
+                            {isMintLoading && 'Waiting for approval'}
+                            {isMintStarted && 'Minting...'}
+                            {!isMintLoading && !isMintStarted && 'Mint'}
+                            </button>
+                            <span>{Math.round(mintAmount * 0.05 * 100) / 100}</span>
+                            <span>ETH</span>
+                        </>
                     )}
                     </div>
                 </div>
