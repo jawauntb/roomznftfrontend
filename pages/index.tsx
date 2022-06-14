@@ -55,14 +55,14 @@ const Home: NextPage = () => {
   });
 
   React.useEffect(() => {
+    if (totalSupplyData) {
+      setTotalMinted(totalSupplyData.toNumber());
+    }
     if (isSaleActiveData) {
       setIsSaleActive(!!isSaleActiveData);
     }
     if (maxSupplyData) {
       setMaxSupply(maxSupplyData.toNumber());
-    }
-    if (totalSupplyData && maxSupplyData) {
-      setTotalMinted(maxSupplyData.toNumber() - totalSupplyData.toNumber());
     }
   }, [totalSupplyData, maxSupplyData, isSaleActiveData]);
 

@@ -28,7 +28,6 @@ const CollectionDetails = ({
     setMintAmount,
     mintAmount,
 }: CollectionDetailsProps) => {
-    
 
     return (
         <>
