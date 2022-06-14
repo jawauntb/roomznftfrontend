@@ -11,7 +11,7 @@ export type NFTCardProps = {
 const NFTCard = ({ isMinted, mintData}: NFTCardProps) => {
 
     return (
-    <div style={{ flex: '0 0 auto' }}>
+    <div style={{ flex: '0 0 auto', boxShadow:'10px 10px lightblue'}}>
         <FlipCard>
             <FrontCard isCardFlipped={isMinted}>
                 <Image
