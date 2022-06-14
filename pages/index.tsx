@@ -11,6 +11,7 @@ import {
 import contractInterface from '../contract-abi.json';
 import CollectionDetails from '../components/CollectionDetails';
 import NFTCard from '../components/NFTCard';
+import { url } from 'inspector';
 
 
 const Home: NextPage = () => {
@@ -67,28 +68,37 @@ const Home: NextPage = () => {
   }, [totalSupplyData, maxSupplyData, isSaleActiveData]);
 
   const isMinted = txSuccess;
+  const backgroundImg = "/icons/0012.png";
 
   return (
-    <div className="page">
-      <div style={{ position: 'absolute', top: '2em', right: '10em' }}>
-        <ConnectButton />
+    <div className="container" style={{ backgroundImage: `url(${backgroundImg})`, backgroundColor: 'linear-gradient(180deg, #FFCC48 0%, rgba(250, 255, 5, 0.97) 100%)' }}>
+      <a style={{position: 'absolute', top:'20px'}} href="https://roomznft.xyz">
+        <img src="https://see.fontimg.com/api/renderfont4/9Ydyy/eyJyIjoiZnMiLCJoIjoxMzAsInciOjIwMDAsImZzIjo2NSwiZmdjIjoiIzAwMDAwMCIsImJnYyI6IiNGRkZGRkYiLCJ0IjoxfQ/Um9vbXo/billy-hatter-pesonal-use-only.png" alt="Lettering fonts" />
+      </a>
+      <div className="page" >
+        <div style={{ position: 'absolute', top: '2em', right: '10em' }}>
+          <ConnectButton />
+        </div>
+        <div style={{ float: 'left' }}>
+          <NFTCard
+              isMinted={isMinted}
+            mintData={mintData} />
+        </div>
+        <div style={{ float: 'right' }}>
+          <CollectionDetails
+              isMintLoading={isMintLoading}
+              isMintStarted={isMintStarted}
+              isMinted={isMinted}
+              isConnected={isConnected}
+              mintError={mintError}
+              txError={txError}
+              totalMinted={totalMinted}
+              mint={mint}
+              setMintAmount={setMintCount}
+              mintAmount={mintCount}
+          />
+        </div>
       </div>
-      <NFTCard
-        isMinted={isMinted}
-        mintData={mintData}
-      />
-      <CollectionDetails
-          isMintLoading={isMintLoading}
-          isMintStarted={isMintStarted}
-          isMinted={isMinted}
-          isConnected={isConnected}
-          mintError={mintError}
-          txError={txError}
-          totalMinted={totalMinted}
-          mint={mint}
-          setMintAmount={setMintCount}
-          mintAmount={mintCount}
-      />
     </div>
   );
 };

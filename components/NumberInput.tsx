@@ -30,17 +30,18 @@ export const InputNumber = ({ onChange, isDisabled }: Props) => {
   const input = getInputProps({ readOnly: true })
 
   return (
+    <div style={{borderRadius:'25px', backgroundColor:"#FFDC81", padding:'15px'}}>
     <HStack
       width="100%"
       maxWidth="186px"
-      background="whiteAlpha.400"
+      background="transparent"
       p="12px"
       style={{ borderRadius: 16 }}
     >
       <IconButton
         {...dec}
         aria-label="Decrement"
-        bg="transparent"
+        bg="'#FFE9B1'"
         _hover={{ bg: 'whiteAlpha.400' }}
         icon={
           <Image
@@ -57,13 +58,14 @@ export const InputNumber = ({ onChange, isDisabled }: Props) => {
         bg="transparent"
         fontWeight="bold"
         width="auto"
+        color='white'
         margin="0px !important"
         textAlign="center"
-        fontSize="24px"
+        fontSize="28px"
       />
       <IconButton
         {...inc}
-        bg="transparent"
+        bg="#FFE9B1"
         aria-label="Increment"
         _hover={{ bg: 'whiteAlpha.400' }}
         icon={
@@ -77,6 +79,7 @@ export const InputNumber = ({ onChange, isDisabled }: Props) => {
         }
       />
     </HStack>
+    </div>
   )
 }
 

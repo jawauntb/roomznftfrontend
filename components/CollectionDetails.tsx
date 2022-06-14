@@ -31,11 +31,10 @@ const CollectionDetails = ({
 
     return (
         <>
-            <div className="container">
-                <div style={{ flex: '1 1 auto' }}>
+            <div className="container" style={{backgroundColor: ' #FFCC48', borderRadius:'25px', marginLeft: '100px', padding:'20px'}}>
+                <div style={{ flex: '1 1 auto', color:'white' }}>
                     <div style={{ padding: '24px 24px 24px 0' }}>
-                    <h1>Roomz NFT</h1>
-                    <p style={{ margin: '12px 0 24px' }}>
+                    <p style={{ margin: '12px 0 24px', fontSize: '72px', fontWeight: 'bold' }}>
                         {totalMinted} minted so far!
                     </p>
 
@@ -57,7 +56,7 @@ const CollectionDetails = ({
                             onChange={(value) => setMintAmount(value)}
                             />
                             <button
-                            style={{ marginTop: 24 }}
+                            style={{boxSizing: 'border-box', marginTop: 24, marginBottom:'12px', fontWeight: 'bold', fontSize: '30px'}}
                             disabled={isMintLoading || isMintStarted}
                             className="button"
                             data-mint-loading={isMintLoading}
@@ -68,8 +67,10 @@ const CollectionDetails = ({
                             {isMintStarted && 'Minting...'}
                             {!isMintLoading && !isMintStarted && 'Mint'}
                             </button>
-                            <span>{Math.round(mintAmount * 0.05 * 100) / 100}</span>
-                            <span>ETH</span>
+                            <div style={{ fontSize:"25px", fontWeight:'bold'}}>
+                                <span>{Math.round(mintAmount * 0.05 * 100) / 100}</span>
+                                <span>ETH</span>
+                            </div>
                         </>
                     )}
                     </div>
