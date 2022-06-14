@@ -30,7 +30,7 @@ export const InputNumber = ({ onChange, isDisabled }: Props) => {
   const input = getInputProps({ readOnly: true })
 
   return (
-    <div style={{borderRadius:'25px', backgroundColor:"#FFDC81", padding:'15px'}}>
+    <div style={{borderRadius:'25px', backgroundColor:"#F5F5DC", padding:'15px'}}>
     <HStack
       width="100%"
       maxWidth="186px"
